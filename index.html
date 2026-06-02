@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SaludMitia — Recupera tu energia despues de los 40</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{font-family:'DM Sans',Arial,sans-serif;background:#fff;color:#1a1a1a;line-height:1.7;}
+.serif{font-family:'Playfair Display',Georgia,serif;}
+
+/* TOP BAR */
+.top-bar{background:#c8392b;color:#fff;text-align:center;padding:10px 1rem;font-size:13px;font-weight:600;letter-spacing:0.3px;}
+
+/* NAV */
+nav{background:#fff;padding:14px 2rem;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid #eee;position:sticky;top:0;z-index:100;box-shadow:0 2px 8px rgba(0,0,0,0.06);}
+.logo{font-family:'Playfair Display',serif;font-size:24px;color:#1a1a1a;}.logo em{color:#e8401a;font-style:normal;}
+.nav-btn{background:#e8401a;color:#fff;font-size:14px;font-weight:600;padding:11px 22px;border-radius:4px;border:none;cursor:pointer;transition:background 0.2s;}
+.nav-btn:hover{background:#c8392b;}
+
+/* HERO */
+.hero{background:#1c1c2e;padding:4rem 2rem;text-align:center;position:relative;overflow:hidden;}
+.hero::before{content:'';position:absolute;top:-60px;left:50%;transform:translateX(-50%);width:600px;height:600px;border-radius:50%;background:radial-gradient(circle,rgba(232,64,26,0.12) 0%,transparent 70%);pointer-events:none;}
+.hero-eyebrow{display:inline-block;border:1px solid rgba(240,192,112,0.5);color:#f0c070;font-size:12px;letter-spacing:2px;text-transform:uppercase;padding:6px 16px;border-radius:2px;margin-bottom:1.5rem;}
+.hero h1{font-family:'Playfair Display',serif;font-size:38px;font-weight:400;color:#fff;line-height:1.25;max-width:640px;margin:0 auto 1.25rem;font-style:italic;}
+.hero h1 em{color:#f0c070;font-style:normal;font-weight:700;}
+.hero-sub{font-size:16px;color:rgba(255,255,255,0.72);max-width:520px;margin:0 auto 2.5rem;line-height:1.75;}
+.hero-cta{background:#e8401a;color:#fff;font-size:17px;font-weight:600;padding:17px 40px;border-radius:4px;border:none;cursor:pointer;transition:all 0.2s;display:inline-block;text-decoration:none;}
+.hero-cta:hover{background:#c8392b;transform:translateY(-1px);}
+.hero-note{font-size:12px;color:rgba(255,255,255,0.45);margin-top:12px;}
+
+/* TRUST STRIP */
+.trust-strip{background:#f8f8f8;border-bottom:1px solid #eee;padding:14px 2rem;}
+.trust-inner{display:flex;justify-content:center;flex-wrap:wrap;gap:1.5rem;max-width:700px;margin:0 auto;}
+.ti{display:flex;align-items:center;gap:7px;font-size:13px;color:#444;font-weight:500;}
+.ti-icon{color:#2ecc71;font-size:18px;}
+
+/* SECTIONS */
+.section{padding:3.5rem 2rem;}
+.section-inner{max-width:660px;margin:0 auto;}
+.eyebrow{font-size:11px;letter-spacing:2.5px;text-transform:uppercase;color:#c8392b;font-weight:700;margin-bottom:8px;}
+.section-h{font-family:'Playfair Display',serif;font-size:28px;font-weight:400;color:#1a1a1a;line-height:1.35;margin-bottom:1.25rem;font-style:italic;}
+.section-h em{color:#c8392b;font-style:normal;}
+.body-p{font-size:16px;color:#333;line-height:1.85;margin-bottom:1.1rem;}
+
+/* RECOGNITION BOX */
+.recog-box{background:#fff8f0;border-left:4px solid #e8401a;padding:1.25rem 1.5rem;margin:1.75rem 0;border-radius:0 8px 8px 0;}
+.recog-box p{font-family:'Playfair Display',serif;font-size:18px;color:#333;line-height:1.6;font-style:italic;}
+
+/* MECHANISM */
+.mech-section{background:#f0f4ff;padding:3.5rem 2rem;}
+.mech-inner{max-width:660px;margin:0 auto;}
+.mech-box{background:#fff;border:2px solid #c8392b;border-radius:12px;padding:2rem;margin:1.5rem 0;text-align:center;}
+.mech-box h3{font-family:'Playfair Display',serif;font-size:22px;color:#c8392b;margin-bottom:1rem;}
+.mech-box p{font-size:15px;color:#444;line-height:1.7;}
+.mech-steps{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:1.5rem;}
+.mech-step{background:#f0f4ff;border-radius:8px;padding:1.1rem;text-align:center;}
+.mech-icon{font-size:28px;color:#2563a8;margin-bottom:8px;display:block;}
+.mech-step h4{font-size:13px;font-weight:700;color:#1a1a1a;margin-bottom:4px;}
+.mech-step p{font-size:12px;color:#666;line-height:1.4;}
+
+/* FUTURE STATE */
+.future-list{margin:1.75rem 0;}
+.future-item{display:flex;align-items:flex-start;gap:14px;margin-bottom:1.1rem;}
+.future-dot{width:30px;height:30px;border-radius:50%;background:#e8401a;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px;}
+.future-dot svg{width:14px;height:14px;fill:none;stroke:#fff;stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round;}
+.future-item p{font-size:16px;color:#333;line-height:1.6;}
+
+/* PRODUCT REVEAL */
+.reveal-section{background:#1c1c2e;padding:3.5rem 2rem;text-align:center;}
+.reveal-inner{max-width:620px;margin:0 auto;}
+.reveal-h{font-family:'Playfair Display',serif;font-size:30px;color:#fff;font-style:italic;margin-bottom:0.75rem;}
+.reveal-h em{color:#f0c070;font-style:normal;}
+.reveal-sub{font-size:15px;color:rgba(255,255,255,0.68);margin-bottom:2.5rem;line-height:1.7;}
+.bottle-row{display:flex;justify-content:center;align-items:center;gap:2.5rem;flex-wrap:wrap;margin-bottom:2rem;}
+.bottle-pills{display:flex;flex-direction:column;gap:10px;text-align:left;}
+.b-pill{background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.15);border-radius:6px;padding:11px 15px;display:flex;align-items:center;gap:10px;}
+.b-pill svg{width:16px;height:16px;fill:none;stroke:#f0c070;stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round;flex-shrink:0;}
+.b-pill span{font-size:14px;color:#fff;}
+
+/* INGREDIENTS */
+.ingr-section{background:#fff;padding:3.5rem 2rem;}
+.ingr-inner{max-width:660px;margin:0 auto;}
+.ingr-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-top:1.5rem;}
+.ingr-card{background:#f7fffe;border:1px solid #b8e4d0;border-radius:8px;padding:1.1rem;}
+.ingr-icon{font-size:22px;margin-bottom:6px;display:block;}
+.ingr-name{font-size:14px;font-weight:700;color:#1a1a1a;margin-bottom:3px;}
+.ingr-desc{font-size:13px;color:#555;line-height:1.5;}
+.ingr-disc{font-size:11px;color:#aaa;margin-top:1.25rem;line-height:1.6;}
+
+/* PROOF */
+.proof-section{background:#fff8f0;padding:3.5rem 2rem;}
+.proof-inner{max-width:660px;margin:0 auto;}
+.proof-nums{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:1.5rem 0;}
+.pnum-card{background:#fff;border-radius:8px;padding:1.1rem;text-align:center;border:1px solid #fce0cc;}
+.pnum{font-size:28px;font-weight:800;color:#c8392b;font-family:'DM Sans',sans-serif;}
+.plbl{font-size:12px;color:#888;margin-top:2px;}
+.testi-list{display:flex;flex-direction:column;gap:14px;margin-top:1.25rem;}
+.tc{background:#fff;border:1px solid #fce0cc;border-radius:10px;padding:1.4rem;}
+.tc-top{display:flex;align-items:center;gap:12px;margin-bottom:0.75rem;}
+.tc-av{width:46px;height:46px;border-radius:50%;background:#e8401a;color:#fff;display:flex;align-items:center;justify-content:center;font-size:15px;font-weight:700;flex-shrink:0;}
+.tc-name{font-size:14px;font-weight:700;color:#1a1a1a;}
+.tc-loc{font-size:12px;color:#999;}
+.stars{color:#f5a623;font-size:15px;margin-bottom:6px;letter-spacing:1px;}
+.tc-text{font-family:'Playfair Display',serif;font-size:15px;color:#333;line-height:1.75;font-style:italic;}
+.tc-disc{font-size:11px;color:#bbb;margin-top:10px;}
+
+/* OFFER STACK */
+.offer-section{background:#1c1c2e;padding:3.5rem 2rem;}
+.offer-inner{max-width:540px;margin:0 auto;text-align:center;}
+.offer-h{font-family:'Playfair Display',serif;font-size:28px;color:#fff;font-style:italic;margin-bottom:0.5rem;}
+.offer-h em{color:#f0c070;font-style:normal;}
+.offer-sub{font-size:14px;color:rgba(255,255,255,0.6);margin-bottom:1.75rem;line-height:1.6;}
+.offer-stack{background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.12);border-radius:12px;padding:1.75rem;margin-bottom:1.75rem;text-align:left;}
+.offer-item{display:flex;align-items:center;gap:12px;padding:11px 0;border-bottom:1px solid rgba(255,255,255,0.07);}
+.offer-item:last-child{border-bottom:none;}
+.offer-check{width:22px;height:22px;border-radius:50%;background:#2ecc71;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.offer-check svg{width:11px;height:11px;fill:none;stroke:#fff;stroke-width:3;stroke-linecap:round;stroke-linejoin:round;}
+.offer-label{font-size:14px;color:#fff;flex:1;}
+.offer-val{font-size:13px;color:#f0c070;font-weight:700;}
+.offer-cta{width:100%;background:#e8401a;color:#fff;font-size:16px;font-weight:700;padding:18px;border-radius:6px;border:none;cursor:pointer;letter-spacing:0.3px;transition:background 0.2s;}
+.offer-cta:hover{background:#c8392b;}
+
+/* GUARANTEE */
+.guar-section{background:#f0fff8;padding:3.5rem 2rem;text-align:center;}
+.guar-inner{max-width:500px;margin:0 auto;}
+.guar-circle{width:100px;height:100px;border-radius:50%;background:#2ecc71;margin:0 auto 1.5rem;display:flex;align-items:center;justify-content:center;}
+.guar-circle svg{width:44px;height:44px;fill:none;stroke:#fff;stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round;}
+.guar-h{font-family:'Playfair Display',serif;font-size:24px;font-weight:700;color:#1a6e40;margin-bottom:0.75rem;}
+.guar-p{font-size:15px;color:#333;line-height:1.75;}
+
+/* FAQ */
+.faq-section{background:#fff;padding:3.5rem 2rem;}
+.faq-inner{max-width:600px;margin:0 auto;}
+.faq-item{border-bottom:1px solid #eee;cursor:pointer;}
+.faq-q{display:flex;justify-content:space-between;align-items:center;font-size:15px;font-weight:600;color:#1a1a1a;padding:1.1rem 0;gap:1rem;}
+.faq-arrow{font-size:20px;color:#c8392b;flex-shrink:0;transition:transform 0.25s;display:inline-block;}
+.faq-item.open .faq-arrow{transform:rotate(45deg);}
+.faq-a{font-size:14px;color:#555;line-height:1.75;padding:0 0 1.1rem;display:none;}
+.faq-item.open .faq-a{display:block;}
+
+/* CAPTURE */
+.capture-section{background:#c8392b;padding:3.5rem 2rem;text-align:center;}
+.capture-box{background:#fff;border-radius:16px;padding:2.75rem 2rem;max-width:460px;margin:0 auto;box-shadow:0 20px 60px rgba(0,0,0,0.2);}
+.cap-h{font-family:'Playfair Display',serif;font-size:24px;color:#1a1a1a;margin-bottom:0.5rem;font-style:italic;}
+.cap-h em{color:#c8392b;font-style:normal;}
+.cap-sub{font-size:14px;color:#666;margin-bottom:1.5rem;line-height:1.6;}
+.offer-tag{background:#fff8f0;border:1.5px solid #fce0cc;border-radius:8px;padding:0.85rem;margin-bottom:1.25rem;font-size:13px;color:#c05020;font-weight:600;display:flex;align-items:center;justify-content:center;gap:6px;}
+.em-in{width:100%;padding:15px 16px;border:2px solid #e0e0e0;border-radius:6px;font-size:15px;outline:none;color:#1a1a1a;font-family:'DM Sans',sans-serif;margin-bottom:10px;transition:border-color 0.2s;}
+.em-in:focus{border-color:#c8392b;}
+.em-in::placeholder{color:#bbb;}
+.sub-btn{width:100%;background:#c8392b;color:#fff;font-size:16px;font-weight:700;padding:17px;border-radius:6px;border:none;cursor:pointer;font-family:'DM Sans',sans-serif;letter-spacing:0.3px;transition:background 0.2s;}
+.sub-btn:hover{background:#a82d22;}
+.trust-row{display:flex;justify-content:center;gap:1.25rem;flex-wrap:wrap;margin-top:14px;}
+.tr{display:flex;align-items:center;gap:4px;font-size:12px;color:#999;}
+.tr-icon{color:#2ecc71;}
+.sbox{display:none;text-align:center;padding:1rem 0;}
+.sbox h3{font-family:'Playfair Display',serif;font-size:22px;color:#1a1a1a;margin-bottom:0.5rem;}
+.sbox p{font-size:14px;color:#555;margin-bottom:1.5rem;line-height:1.6;}
+.big-link{display:block;background:#c8392b;color:#fff;font-size:16px;font-weight:700;padding:18px;border-radius:6px;text-decoration:none;letter-spacing:0.3px;transition:background 0.2s;}
+.big-link:hover{background:#a82d22;}
+
+/* FOOTER */
+footer{background:#111;padding:2.5rem 2rem;text-align:center;}
+.footer-links{display:flex;justify-content:center;gap:1.5rem;flex-wrap:wrap;margin-bottom:1rem;}
+.footer-links a{font-size:12px;color:#555;text-decoration:none;}
+.footer-links a:hover{color:#888;}
+footer p{font-size:11px;color:#444;line-height:1.8;max-width:640px;margin:0 auto;}
+
+/* BOTTLE SVG */
+.bottle-svg-wrap{position:relative;display:inline-block;}
+.bottle-glow{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:200px;height:200px;border-radius:50%;background:radial-gradient(circle,rgba(240,192,112,0.15) 0%,transparent 70%);}
+
+/* RESPONSIVE */
+@media(max-width:600px){
+  .hero h1{font-size:26px;}
+  .mech-steps{grid-template-columns:1fr;}
+  .ingr-grid{grid-template-columns:1fr;}
+  .proof-nums{grid-template-columns:1fr 1fr 1fr;}
+  .pnum{font-size:20px;}
+  .bottle-row{flex-direction:column;align-items:center;}
+  .bottle-pills{align-items:center;}
+  .b-pill{min-width:220px;}
+  nav{padding:12px 1rem;}
+  .section{padding:2.5rem 1.25rem;}
+}
+</style>
+</head>
+<body>
+
+<div class="top-bar">Guia gratuita disponible hoy &mdash; Oferta por tiempo limitado</div>
+
+<nav>
+  <div class="logo">Salud<em>Mitia</em></div>
+  <button class="nav-btn" onclick="document.getElementById('capture').scrollIntoView({behavior:'smooth'})">VER OFERTA ESPECIAL</button>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <span class="hero-eyebrow">Para mujeres de 40 en adelante</span>
+  <h1 class="serif">&iquest;Por qu&eacute; tantas mujeres sienten que su cuerpo <em>cambi&oacute; despu&eacute;s de los 40?</em> La respuesta podr&iacute;a sorprenderte.</h1>
+  <p class="hero-sub">No se trata de volver a tener 25 a&ntilde;os. Se trata de volver a sentirte t&uacute; misma &mdash; con energ&iacute;a, confianza y bienestar real.</p>
+  <a href="#capture" class="hero-cta" onclick="event.preventDefault();document.getElementById('capture').scrollIntoView({behavior:'smooth'})">Quiero saber m&aacute;s</a>
+  <p class="hero-note">Sin compromiso &bull; Informaci&oacute;n gratuita incluida</p>
+</section>
+
+<!-- TRUST STRIP -->
+<div class="trust-strip">
+  <div class="trust-inner">
+    <div class="ti"><span class="ti-icon">&#10003;</span>Ingredientes naturales</div>
+    <div class="ti"><span class="ti-icon">&#10003;</span>Fabricado en EE.UU.</div>
+    <div class="ti"><span class="ti-icon">&#10003;</span>Compra segura</div>
+    <div class="ti"><span class="ti-icon">&#10003;</span>Garant&iacute;a 60 d&iacute;as</div>
+    <div class="ti"><span class="ti-icon">&#10003;</span>+12,000 mujeres</div>
+  </div>
+</div>
+
+<!-- PROBLEM / RECOGNITION -->
+<section class="section">
+  <div class="section-inner">
+    <p class="eyebrow">Te suena familiar?</p>
+    <h2 class="section-h serif">Te esfuerzas. Comes mejor. Intentas mantenerte activa. Y a&uacute;n as&iacute;, sientes que tu cuerpo <em>ya no responde igual.</em></h2>
+    <p class="body-p">No es falta de voluntad. No es que seas floja. No es que no te esfuerces lo suficiente.</p>
+    <div class="recog-box">
+      <p>"La meta no es solo verte diferente. Es volver a reconocer a la mujer que todav&iacute;a est&aacute; ah&iacute;."</p>
+    </div>
+    <p class="body-p">Muchas mujeres despu&eacute;s de los 40 experimentan cambios en su energ&iacute;a, metabolismo y bienestar general. La buena noticia: <strong>hay una raz&oacute;n espec&iacute;fica para esto</strong> &mdash; y una vez que la entiendes, todo tiene m&aacute;s sentido.</p>
+    <p class="body-p">Tal vez el problema nunca fue tu disciplina.</p>
+  </div>
+</section>
+
+<!-- MECHANISM -->
+<section class="mech-section">
+  <div class="mech-inner">
+    <p class="eyebrow">El descubrimiento</p>
+    <h2 class="section-h serif">El &ldquo;interruptor metab&oacute;lico&rdquo; que cambia <em>despu&eacute;s de los 40</em></h2>
+    <p class="body-p">Investigadores han identificado que muchas mujeres mayores de 40 a&ntilde;os no luchan contra la fuerza de voluntad &mdash; sino contra cambios hormonales y metab&oacute;licos naturales que hacen que el cuerpo responda de manera diferente a la dieta y el ejercicio.</p>
+    <div class="mech-box">
+      <h3>La Ruta de Activaci&oacute;n Citrus</h3>
+      <p>CitrusBurn fue formulado para trabajar en sinergia con los cambios naturales del cuerpo femenino despu&eacute;s de los 40 &mdash; complementando el metabolismo con ingredientes naturales espec&iacute;ficamente seleccionados para esta etapa de la vida.</p>
+    </div>
+    <div class="mech-steps">
+      <div class="mech-step"><span class="mech-icon">&#128293;</span><h4>Complementa</h4><p>Apoya el metabolismo natural de tu cuerpo</p></div>
+      <div class="mech-step"><span class="mech-icon">&#9889;</span><h4>Energiza</h4><p>Ingredientes para el bienestar y vitalidad diaria</p></div>
+      <div class="mech-step"><span class="mech-icon">&#10084;</span><h4>Equilibra</h4><p>F&oacute;rmula pensada para la mujer de 40 en adelante</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- FUTURE STATE -->
+<section class="section">
+  <div class="section-inner">
+    <p class="eyebrow">Im&aacute;ginate esto</p>
+    <h2 class="section-h serif">C&oacute;mo se sentir&iacute;a <em>despertar diferente</em></h2>
+    <p class="body-p">Antes de hablar del producto &mdash; cierra los ojos un momento e im&aacute;ginate esto:</p>
+    <div class="future-list">
+      <div class="future-item">
+        <div class="future-dot"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/></svg></div>
+        <p>Despertar con energ&iacute;a real &mdash; sin esa sensaci&oacute;n de arrastrarte desde la cama</p>
+      </div>
+      <div class="future-item">
+        <div class="future-dot"><svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></div>
+        <p>Sentirte c&oacute;moda y segura con tu ropa &mdash; sin pensarlo dos veces</p>
+      </div>
+      <div class="future-item">
+        <div class="future-dot"><svg viewBox="0 0 24 24"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg></div>
+        <p>No evitar las fotos &mdash; sino esperarlas con confianza</p>
+      </div>
+      <div class="future-item">
+        <div class="future-dot"><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div>
+        <p>Sentirte deseada, atractiva y presente &mdash; en tu propia piel</p>
+      </div>
+      <div class="future-item">
+        <div class="future-dot"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
+        <p>Tener energ&iacute;a de verdad para tu familia, tus proyectos, tu vida</p>
+      </div>
+    </div>
+    <p class="body-p">Eso no es un sue&ntilde;o. Es lo que miles de mujeres est&aacute;n experimentando. Y empieza con un primer paso.</p>
+  </div>
+</section>
+
+<!-- PRODUCT REVEAL -->
+<section class="reveal-section">
+  <div class="reveal-inner">
+    <p class="hero-eyebrow" style="margin-bottom:0.75rem;">El producto</p>
+    <h2 class="reveal-h serif">Presentando <em>CitrusBurn</em></h2>
+    <p class="reveal-sub">El suplemento formulado espec&iacute;ficamente para mujeres de 40 en adelante que buscan complementar su bienestar de forma natural.</p>
+    <div class="bottle-row">
+      <div class="bottle-svg-wrap">
+        <div class="bottle-glow"></div>
+        <svg width="160" height="230" viewBox="0 0 160 230" role="img" aria-label="CitrusBurn supplement bottle">
+          <defs>
+            <linearGradient id="bg5" x1="0%" y1="0%" x2="100%" y2="0%">
+              <stop offset="0%" style="stop-color:#d8d8d8"/>
+              <stop offset="45%" style="stop-color:#ffffff"/>
+              <stop offset="100%" style="stop-color:#c0c0c0"/>
+            </linearGradient>
+            <linearGradient id="cp5" x1="0%" y1="0%" x2="100%" y2="0%">
+              <stop offset="0%" style="stop-color:#b03515"/>
+              <stop offset="50%" style="stop-color:#e8401a"/>
+              <stop offset="100%" style="stop-color:#a02d10"/>
+            </linearGradient>
+            <linearGradient id="lb5" x1="0%" y1="0%" x2="100%" y2="0%">
+              <stop offset="0%" style="stop-color:#c83010"/>
+              <stop offset="100%" style="stop-color:#a02808"/>
+            </linearGradient>
+          </defs>
+          <rect x="54" y="18" width="52" height="14" rx="5" fill="url(#cp5)" stroke="#803010" stroke-width="0.5"/>
+          <rect x="47" y="30" width="66" height="10" rx="3" fill="#b02808" stroke="#803010" stroke-width="0.5"/>
+          <rect x="37" y="38" width="86" height="165" rx="13" fill="url(#bg5)" stroke="#c0c0c0" stroke-width="0.5"/>
+          <rect x="39" y="55" width="82" height="128" rx="5" fill="url(#lb5)"/>
+          <rect x="41" y="57" width="78" height="2" rx="1" fill="rgba(255,255,255,0.4)"/>
+          <rect x="41" y="181" width="78" height="2" rx="1" fill="rgba(255,255,255,0.4)"/>
+          <text x="80" y="82" text-anchor="middle" font-size="10" fill="rgba(255,255,255,0.8)" font-family="Arial,sans-serif" letter-spacing="3" font-weight="700">CITRUS</text>
+          <text x="80" y="108" text-anchor="middle" font-size="28" fill="#ffffff" font-family="Arial,sans-serif" font-weight="900">BURN</text>
+          <text x="80" y="123" text-anchor="middle" font-size="7" fill="rgba(255,255,255,0.72)" font-family="Arial,sans-serif" letter-spacing="1.5">SPECIALLY FORMULATED</text>
+          <text x="80" y="133" text-anchor="middle" font-size="7" fill="rgba(255,255,255,0.72)" font-family="Arial,sans-serif" letter-spacing="1.5">THERMOGENIC BLEND</text>
+          <circle cx="80" cy="158" r="18" fill="rgba(255,255,255,0.12)" stroke="rgba(255,255,255,0.25)" stroke-width="1"/>
+          <text x="80" y="154" text-anchor="middle" font-size="7" fill="#fff" font-family="Arial,sans-serif" font-weight="700">EXTRA</text>
+          <text x="80" y="165" text-anchor="middle" font-size="7" fill="#fff" font-family="Arial,sans-serif" font-weight="700">STRENGTH</text>
+          <text x="80" y="178" text-anchor="middle" font-size="8" fill="rgba(255,255,255,0.6)" font-family="Arial,sans-serif">60 CAPSULAS</text>
+          <ellipse cx="80" cy="204" rx="43" ry="7" fill="rgba(0,0,0,0.18)"/>
+        </svg>
+      </div>
+      <div class="bottle-pills">
+        <div class="b-pill"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg><span>F&oacute;rmula 100% natural</span></div>
+        <div class="b-pill"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg><span>Sin efectos secundarios conocidos</span></div>
+        <div class="b-pill"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg><span>Fabricado en EE.UU.</span></div>
+        <div class="b-pill"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg><span>Para mujeres 40+</span></div>
+        <div class="b-pill"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg><span>Garant&iacute;a de satisfacci&oacute;n 60 d&iacute;as</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- INGREDIENTS -->
+<section class="ingr-section">
+  <div class="ingr-inner">
+    <p class="eyebrow">Qu&eacute; hay adentro</p>
+    <h2 class="section-h serif">Ingredientes naturales. <em>Formulaci&oacute;n inteligente.</em></h2>
+    <p class="body-p">Cada ingrediente en CitrusBurn fue seleccionado para complementar las necesidades espec&iacute;ficas de mujeres mayores de 40 a&ntilde;os.</p>
+    <div class="ingr-grid">
+      <div class="ingr-card"><span class="ingr-icon">&#127819;</span><div class="ingr-name">Extracto de citrus</div><div class="ingr-desc">Antioxidante natural que apoya el bienestar celular y la vitalidad diaria</div></div>
+      <div class="ingr-card"><span class="ingr-icon">&#127815;</span><div class="ingr-name">T&eacute; verde</div><div class="ingr-desc">Ingrediente cl&aacute;sico usado para complementar el metabolismo de forma natural</div></div>
+      <div class="ingr-card"><span class="ingr-icon">&#127807;</span><div class="ingr-name">Jengibre</div><div class="ingr-desc">Apoya la digesti&oacute;n saludable y el bienestar general del cuerpo</div></div>
+      <div class="ingr-card"><span class="ingr-icon">&#9728;</span><div class="ingr-name">Vitamina D3</div><div class="ingr-desc">Clave para energ&iacute;a, funci&oacute;n inmune y bienestar &oacute;seo despu&eacute;s de los 40</div></div>
+      <div class="ingr-card"><span class="ingr-icon">&#127774;</span><div class="ingr-name">Magnesio</div><div class="ingr-desc">Apoya el descanso reparador y la funci&oacute;n muscular natural</div></div>
+      <div class="ingr-card"><span class="ingr-icon">&#128737;</span><div class="ingr-name">Zinc</div><div class="ingr-desc">Mineral esencial para el sistema inmune, energ&iacute;a y vitalidad</div></div>
+    </div>
+    <p class="ingr-disc">Estas declaraciones no han sido evaluadas por la FDA. Consulte a su m&eacute;dico antes de usar cualquier suplemento.</p>
+  </div>
+</section>
+
+<!-- PROOF + TESTIMONIALS -->
+<section class="proof-section">
+  <div class="proof-inner">
+    <p class="eyebrow">Resultados reales</p>
+    <h2 class="section-h serif">Ellas tomaron la decisi&oacute;n. <em>T&uacute; puedes tambi&eacute;n.</em></h2>
+    <div class="proof-nums">
+      <div class="pnum-card"><div class="pnum">12,847</div><div class="plbl">Clientas satisfechas</div></div>
+      <div class="pnum-card"><div class="pnum">4.8&#9733;</div><div class="plbl">Calificaci&oacute;n promedio</div></div>
+      <div class="pnum-card"><div class="pnum">60 d&iacute;as</div><div class="plbl">Garant&iacute;a de satisfacci&oacute;n</div></div>
+    </div>
+    <div class="testi-list">
+      <div class="tc">
+        <div class="tc-top"><div class="tc-av">MG</div><div><div class="tc-name">Mar&iacute;a G., 47 a&ntilde;os &bull; San Antonio, TX</div></div></div>
+        <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <p class="tc-text">"Me esforzaba y no ve&iacute;a resultados. Decid&iacute; intentar CitrusBurn junto a mis caminatas y comer mejor. Llevo 8 semanas y noto una diferencia real en mi energ&iacute;a y c&oacute;mo me siento. Mi familia lo nota tambi&eacute;n."</p>
+        <p class="tc-disc">Resultados individuales pueden variar. Esta cliente us&oacute; CitrusBurn junto a h&aacute;bitos saludables.</p>
+      </div>
+      <div class="tc">
+        <div class="tc-top"><div class="tc-av">LR</div><div><div class="tc-name">Lupita R., 51 a&ntilde;os &bull; Houston, TX</div></div></div>
+        <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <p class="tc-text">"A mis 51 ya hab&iacute;a perdido la esperanza de sentirme bien. Mi comadre me recomend&oacute; CitrusBurn. Me gust&oacute; que es natural &mdash; no me da nerviosismo como otros suplementos. Me siento m&aacute;s tranquila y con m&aacute;s energ&iacute;a."</p>
+        <p class="tc-disc">Resultados individuales pueden variar.</p>
+      </div>
+      <div class="tc">
+        <div class="tc-top"><div class="tc-av">CR</div><div><div class="tc-name">Carmen R., 44 a&ntilde;os &bull; Dallas, TX</div></div></div>
+        <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <p class="tc-text">"Empec&eacute; para sentirme mejor conmigo misma. Y s&iacute; &mdash; lo logr&eacute;. Pero lo que no esperaba fue recuperar mi confianza. Me miro al espejo diferente. Eso no tiene precio."</p>
+        <p class="tc-disc">Resultados individuales pueden variar.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- OFFER STACK -->
+<section class="offer-section">
+  <div class="offer-inner">
+    <p class="hero-eyebrow" style="margin-bottom:0.75rem;">Tu oferta de hoy</p>
+    <h2 class="offer-h serif">Todo lo que recibes <em>hoy</em></h2>
+    <p class="offer-sub">Al obtener tu gu&iacute;a gratuita hoy, accedes a este paquete completo de bienestar sin costo adicional.</p>
+    <div class="offer-stack">
+      <div class="offer-item"><div class="offer-check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div><span class="offer-label">Gu&iacute;a de bienestar para mujeres 40+</span><span class="offer-val">GRATIS</span></div>
+      <div class="offer-item"><div class="offer-check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div><span class="offer-label">Descuento especial en CitrusBurn</span><span class="offer-val">HOY</span></div>
+      <div class="offer-item"><div class="offer-check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div><span class="offer-label">Gu&iacute;a de recetas saludables</span><span class="offer-val">GRATIS</span></div>
+      <div class="offer-item"><div class="offer-check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div><span class="offer-label">Serie de 30 d&iacute;as de bienestar por email</span><span class="offer-val">GRATIS</span></div>
+      <div class="offer-item"><div class="offer-check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div><span class="offer-label">Garant&iacute;a de satisfacci&oacute;n 60 d&iacute;as</span><span class="offer-val">INCLUIDA</span></div>
+    </div>
+    <button class="offer-cta" onclick="document.getElementById('capture').scrollIntoView({behavior:'smooth'})">OBTENER MI GU&Iacute;A GRATUITA AHORA</button>
+  </div>
+</section>
+
+<!-- GUARANTEE -->
+<section class="guar-section">
+  <div class="guar-inner">
+    <div class="guar-circle">
+      <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg>
+    </div>
+    <h3 class="guar-h">Garant&iacute;a de satisfacci&oacute;n &mdash; 60 d&iacute;as</h3>
+    <p class="guar-p">Int&eacute;ntalo. Si en cualquier momento dentro de los primeros 60 d&iacute;as no est&aacute;s satisfecha, contacta al equipo de CitrusBurn y recibe atenci&oacute;n personalizada. Tu satisfacci&oacute;n es la prioridad.</p>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq-section">
+  <div class="faq-inner">
+    <p class="eyebrow" style="text-align:center;">Preguntas frecuentes</p>
+    <h2 class="section-h serif" style="text-align:center;margin-bottom:0.5rem;">Resolvemos tus <em>dudas</em></h2>
+    <div class="faq-item" onclick="toggleFaq(this)">
+      <div class="faq-q">&iquest;Qu&eacute; es CitrusBurn exactamente?<span class="faq-arrow">+</span></div>
+      <div class="faq-a">CitrusBurn es un suplemento diet&eacute;tico formulado con ingredientes naturales para mujeres mayores de 40 a&ntilde;os. Est&aacute; dise&ntilde;ado para complementar el metabolismo, la energ&iacute;a y el bienestar general como parte de un estilo de vida saludable.</div>
+    </div>
+    <div class="faq-item" onclick="toggleFaq(this)">
+      <div class="faq-q">&iquest;C&oacute;mo y cu&aacute;ndo se toma?<span class="faq-arrow">+</span></div>
+      <div class="faq-a">Se recomienda una c&aacute;psula al d&iacute;a por la ma&ntilde;ana con agua. Para mejores resultados, combin&aacute;lo con alimentaci&oacute;n equilibrada y actividad f&iacute;sica regular.</div>
+    </div>
+    <div class="faq-item" onclick="toggleFaq(this)">
+      <div class="faq-q">&iquest;Cu&aacute;ndo podr&eacute; notar diferencia?<span class="faq-arrow">+</span></div>
+      <div class="faq-a">Los resultados var&iacute;an seg&uacute;n cada persona &mdash; su metabolismo, h&aacute;bitos y consistencia de uso. No hacemos promesas de resultados espec&iacute;ficos. La mayor&iacute;a de usuarias que lo combinan con h&aacute;bitos saludables reportan notar cambios con uso consistente.</div>
+    </div>
+    <div class="faq-item" onclick="toggleFaq(this)">
+      <div class="faq-q">&iquest;Tiene efectos secundarios?<span class="faq-arrow">+</span></div>
+      <div class="faq-a">CitrusBurn usa ingredientes naturales. Siempre recomendamos consultar con su m&eacute;dico antes de iniciar cualquier suplemento, especialmente si toma medicamentos o tiene condiciones de salud preexistentes.</div>
+    </div>
+    <div class="faq-item" onclick="toggleFaq(this)">
+      <div class="faq-q">&iquest;Se puede combinar con otros suplementos?<span class="faq-arrow">+</span></div>
+      <div class="faq-a">Consulte con su m&eacute;dico o profesional de salud antes de combinar suplementos. Ellos pueden orientarla seg&uacute;n su situaci&oacute;n espec&iacute;fica.</div>
+    </div>
+    <div class="faq-item" onclick="toggleFaq(this)">
+      <div class="faq-q">&iquest;C&oacute;mo funciona la garant&iacute;a?<span class="faq-arrow">+</span></div>
+      <div class="faq-a">CitrusBurn ofrece garant&iacute;a de satisfacci&oacute;n. Para detalles completos sobre pol&iacute;tica de devoluci&oacute;n y reembolso, cons&uacute;ltelos directamente en la p&aacute;gina del producto al hacer clic en el enlace de oferta especial.</div>
+    </div>
+  </div>
+</section>
+
+<!-- CAPTURE / CTA -->
+<section class="capture-section" id="capture">
+  <div class="capture-box">
+    <div id="form-area">
+      <h2 class="cap-h serif">Obtener acceso inmediato a mi <em>gu&iacute;a gratuita</em></h2>
+      <p class="cap-sub">Entra tu email y recibe tu gu&iacute;a de bienestar + acceso a la oferta especial. Sin spam. Sin compromiso.</p>
+      <div class="offer-tag">&#127991; Oferta por tiempo limitado &mdash; disponible hoy</div>
+      <input class="em-in" type="email" id="emailInput" placeholder="Tu email aqu&iacute;..."/>
+      <button class="sub-btn" onclick="doSubmit()">ENVIARME LA GU&Iacute;A AHORA</button>
+      <div class="trust-row">
+        <div class="tr"><span class="tr-icon">&#128274;</span>Sin spam</div>
+        <div class="tr"><span class="tr-icon">&#10003;</span>100% seguro</div>
+        <div class="tr"><span class="tr-icon">&#10007;</span>Sin compromiso</div>
+      </div>
+    </div>
+    <div class="sbox" id="success-box">
+      <h3 class="serif">Ya eres parte de nosotras</h3>
+      <p>Tu gu&iacute;a gratuita est&aacute; en camino. Ahora da el primer paso hacia la mejor versi&oacute;n de ti.</p>
+      <a class="big-link" href="https://e184cmu-35vl5ubask5k44vivd.hop.clickbank.net" target="_blank">VER MI OFERTA ESPECIAL AHORA</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-links">
+    <a href="#">Privacidad</a>
+    <a href="#">T&eacute;rminos</a>
+    <a href="#">Reembolsos</a>
+    <a href="#">Contacto</a>
+    <a href="#">Ingredientes</a>
+  </div>
+  <p>SaludMitia es un afiliado independiente. No somos los fabricantes de CitrusBurn. Los resultados individuales pueden variar. Estas declaraciones no han sido evaluadas por la Administraci&oacute;n de Alimentos y Medicamentos (FDA). Este producto no est&aacute; dise&ntilde;ado para diagnosticar, tratar, curar ni prevenir ninguna enfermedad. Consulte a su m&eacute;dico o profesional de salud antes de comenzar cualquier programa de suplementaci&oacute;n.</p>
+</footer>
+
+<script>
+function doSubmit(){
+  var e=document.getElementById('emailInput').value.trim();
+  if(!e||!e.includes('@')||!e.includes('.')){alert('Por favor entra un email v\u00e1lido');return;}
+  document.getElementById('form-area').style.display='none';
+  document.getElementById('success-box').style.display='block';
+}
+function toggleFaq(el){
+  el.classList.toggle('open');
+}
+</script>
+</body>
+</html>
